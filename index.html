@@ -127,7 +127,7 @@ View Portfolio
     <div class="w-full h-full rounded-full overflow-hidden bg-white">
 
         <img
-            src="assets/nandafoto.jpeg"
+            src="nandafoto.jpeg"
             alt="Nanda Raflie"
             class="w-full h-full object-cover">
 
@@ -809,7 +809,7 @@ View Portfolio
                 class="md:col-span-2 lg:col-span-3 cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition duration-300 flex flex-col md:flex-row">
 
                 <img
-                    src="assets/Screenshot 2026-07-31 095109.PNG"
+                    src="Screenshot 2026-07-31 095109.PNG"
                     alt="123 Motowash"
                     class="w-full md:w-80 h-52 md:h-auto object-cover flex-shrink-0">
 
@@ -990,7 +990,7 @@ View Portfolio
                class="cursor-pointer bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition duration-300">
 
                 <img
-                    src="assets/Sertifikat RevoU_pages-to-jpg-0001.jpg"
+                    src="Sertifikat RevoU_pages-to-jpg-0001.jpg"
                     alt="RevoU Data Analytics"
                     class="w-full h-56 object-cover">
 
@@ -1026,7 +1026,7 @@ View Portfolio
                class="cursor-pointer bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition duration-300">
 
                 <img
-                    src="assets/MSIB.jpg.jpg"
+                    src="MSIB.jpg.jpg"
                     alt="MSIB ATT Group"
                     class="w-full h-56 object-cover">
 
@@ -1062,7 +1062,7 @@ View Portfolio
                class="cursor-pointer bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition duration-300">
 
                 <img
-                    src="assets/Sertifikat Kompetensi Online Shop GeTI_page-0001.jpg"
+                    src="Sertifikat Kompetensi Online Shop GeTI_page-0001.jpg"
                     alt="GeTI Incubator"
                     class="w-full h-56 object-cover">
 
@@ -1926,6 +1926,37 @@ scroll-behavior:smooth;
 
 <script>
 
+/* Helper: coba load gambar dengan beberapa kemungkinan ekstensi
+   (.jpg, .JPG, .jpeg, .png, .PNG) tanpa ganti apapun di data lo.
+   Kalau src yang lo tulis udah pakai ekstensi tertentu, dia tetap
+   dicoba duluan, baru lanjut coba ekstensi lain kalau gagal. */
+function tryLoadImage(src, onSuccess){
+  const dotIndex = src.lastIndexOf(".");
+  const base = dotIndex !== -1 ? src.substring(0, dotIndex) : src;
+  const originalExt = dotIndex !== -1 ? src.substring(dotIndex) : "";
+
+  const candidates = [src];
+  ["jpg", "JPG", "jpeg", "JPEG", "png", "PNG"].forEach(function(ext){
+    const candidate = base + "." + ext;
+    if(candidates.indexOf(candidate) === -1){
+      candidates.push(candidate);
+    }
+  });
+
+  let i = 0;
+  function attempt(){
+    if(i >= candidates.length) return;
+    const img = new Image();
+    img.onload = function(){ onSuccess(img); };
+    img.onerror = function(){
+      i++;
+      attempt();
+    };
+    img.src = candidates[i];
+  }
+  attempt();
+}
+
 const projectsData = {
 
   "backyard-gdc": {
@@ -1943,11 +1974,11 @@ const projectsData = {
     instagram: "https://www.instagram.com/backyard.gdc/",
     /* GANTI/TARUH foto lo di sini, urutan bebas, boleh kurang dari 5 */
     images: [
-      "assets/backyard-gdc-1.png",
-      "assets/backyard-gdc-2.png",
-      "assets/backyard-gdc-3.png",
-      "assets/backyard-gdc-4.png",
-      "assets/backyard-gdc-5.png"
+      "backyard-gdc-1.jpg",
+      "backyard-gdc-2.jpg",
+      "backyard-gdc-3.jpg",
+      "backyard-gdc-4.jpg",
+      "backyard-gdc-5.jpg"
     ]
   },
 
@@ -1965,11 +1996,11 @@ const projectsData = {
     growth: 200,
     instagram: "https://www.instagram.com/kelas.geti",
     images: [
-      "assets/kelasgeti 1.png",
-      "assets/kelas geti 2.png",
-      "assets/kelas geti 3.png",
-      "assets/kelas geti 4.png",
-      "assets/kelas geti 5.png"
+      "kelasgeti 1.png",
+      "kelas geti 2.png",
+      "kelas geti 3.png",
+      "kelas geti 4.png",
+      "kelas geti 5.png"
     ]
   },
 
@@ -1987,11 +2018,11 @@ const projectsData = {
     growth: 200,
     instagram: null,
     images: [
-      "assets/taubisajago 1.png",
-      "assets/taubisajago 2.png",
-      "assets/taubisajago 3.png",
-      "assets/taubisajago 4.png",
-      "assets/taubisajago 5.png"
+      "taubisajago 1.png",
+      "taubisajago 2.png",
+      "taubisajago 3.png",
+      "taubisajago 4.png",
+      "taubisajago 5.png"
     ]
   },
 
@@ -2009,11 +2040,11 @@ const projectsData = {
     growth: 200,
     instagram: "https://www.instagram.com/123_steammotor",
     images: [
-      "assets/steammotor 1.png",
-      "assets/steammotor 2.png",
-      "assets/steammotor 3.png",
-      "assets/steammotor 4.png",
-      "assets/steammotor 5.png"
+      "steammotor 1.png",
+      "steammotor 2.png",
+      "steammotor 3.png",
+      "steammotor 4.png",
+      "steammotor 5.png"
     ]
   }
 
@@ -2056,14 +2087,12 @@ function openProjectModal(id){
     box.className = "aspect-square border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center text-gray-400 text-xs text-center px-1 overflow-hidden";
     box.textContent = "Foto " + (i + 1);
 
-    const img = new Image();
-    img.onload = function(){
+    tryLoadImage(src, function(img){
       box.textContent = "";
       box.className = "aspect-square rounded-xl overflow-hidden";
       img.className = "w-full h-full object-cover";
       box.appendChild(img);
-    };
-    img.src = src;
+    });
 
     gallery.appendChild(box);
   });
@@ -2236,7 +2265,7 @@ const revouData = {
   issuer: "Data Analytics Training Program",
   year: "2024",
   description: `Completed a Data Analytics training program at RevoU, gaining foundational knowledge of how data can be collected, processed, analyzed, and transformed into actionable insights. The training introduced me to data-driven problem solving and the use of analytical approaches to support business and marketing decisions, including tools such as Google Sheets/Excel, SQL, and Python.<br><br><strong>Key Skills:</strong><br>Data Analysis · Data-Driven Decision Making · Problem Solving · Business Insight`,
-  image: "assets/Sertifikat RevoU_pages-to-jpg-0001.jpg"
+  image: "Sertifikat RevoU_pages-to-jpg-0001.jpg"
 };
 
 const msibData = {
@@ -2244,7 +2273,7 @@ const msibData = {
   issuer: "ATT Group – Magang & Studi Independen Bersertifikat",
   year: "2023",
   description: `Participated in MSIB Batch 5 at ATT Group, gaining hands-on experience in a professional work environment while developing practical skills through structured projects and workplace activities. The program strengthened my ability to work collaboratively, communicate effectively, manage responsibilities, and adapt to professional workflows.<br><br><strong>Key Skills:</strong><br>Professional Communication · Teamwork · Project Management · Adaptability · Problem Solving`,
-  image: "assets/MSIB.jpg.jpg"
+  image: "MSIB.jpg.jpg"
 };
 
 const getiData = {
@@ -2252,7 +2281,7 @@ const getiData = {
   issuer: "E-Commerce Competency Certification",
   year: "2023",
   description: `Completed an online E-Commerce Competency Certification program at GETI, developing practical knowledge of e-commerce operations and digital business processes. The program strengthened my understanding of online commerce, digital marketing, customer engagement, and the overall e-commerce ecosystem.<br><br><strong>Key Skills:</strong><br>E-Commerce · Digital Marketing · Online Business · Customer Engagement · Digital Commerce`,
-  image: "assets/Sertifikat Kompetensi Online Shop GeTI_page-0001.jpg"
+  image: "Sertifikat Kompetensi Online Shop GeTI_page-0001.jpg"
 };
 
 /* ============ OTHER CERTIFICATES ============ */
@@ -2270,7 +2299,7 @@ const certData = [
     issuer: "Diperoleh dari AISEC Unila",
     year: "2024",
     description: `Participated in Widyawita, an AIESEC social impact project focused on children's development and environmental awareness. Collaborated with AIESEC members from 20+ countries, gaining experience in cross-cultural communication, teamwork, and international collaboration.<br><br><strong>Key Experience:</strong><ul class="list-disc pl-5 mt-2 space-y-1"><li>Collaborated with international participants from 20+ countries.</li><li>Contributed to activities focused on children and environmental awareness.</li><li>Worked in a multicultural team to support project activities and objectives.</li><li>Developed communication, teamwork, adaptability, and cross-cultural collaboration skills.</li></ul>`,
-    image: "assets/sertifikat widyawitama.png"
+    image: "sertifikat widyawitama.jpg"
   },
 
   {
@@ -2278,7 +2307,7 @@ const certData = [
     issuer: "PT Global Edukasi Talenta Inkubator (GETI)",
     year: "2023",
     description: `Completed an internship at PT Global Edukasi Talenta Inkubator (GETI), supporting various business unit activities related to digital content, educational programs, and communication materials.<br><br><strong>Key Responsibilities:</strong><ul class="list-disc pl-5 mt-2 space-y-1"><li>Created content plans for GETI classes.</li><li>Developed copywriting for class content.</li><li>Edited video content for GETI's digital platforms.</li><li>Created PPT, PTP, and RPP materials for Prakerja programs.</li><li>Served as an ATP (Assistant Trainer/Teaching Personnel) substitute for Prakerja classes.</li><li>Rewrote articles related to UMKM and Exporthub.id.</li><li>Created quiz materials for Prakerja programs.</li><li>Assisted Disnaker activities and supported the Prakerja team.</li></ul>`,
-    image: "assets/Sertifikat Magang GeTI_page-0002.jpg"
+    image: "Sertifikat Magang GeTI_page-0002.jpg"
   },
 
   {
@@ -2286,7 +2315,7 @@ const certData = [
     issuer: "Diperoleh dari HMJ Ilmu Komunikasi unula",
     year: "2024",
     description: `Actively involved in broadcasting, content production, and creative event projects through the Broadcasting Division of the Communication Studies Student Association.<br><br><strong>Key Projects &amp; Achievements:</strong><br><br><strong>🎙️ Podcast Production</strong><ul class="list-disc pl-5 mt-2 space-y-1"><li>Produced and developed podcast content covering the concept development, production, and content planning stages.</li><li>Published podcast episodes on YouTube and Spotify.</li><li>Collaborated with Unila TV to produce a podcast collaboration that was broadcast through the university's television platform.</li></ul><br><strong>🎬 Short Movie Production</strong><ul class="list-disc pl-5 mt-2 space-y-1"><li>Participated in the production of a short film for a 2024 film festival.</li><li>Contributed to the creative and production process, from concept development to filming and post-production.</li><li>Won an award at the 2024 film festival. 🏆</li></ul>`,
-    image: "assets/Sertifikat HMJ BROADCAST_page-0001.jpg"
+    image: "Sertifikat HMJ BROADCAST_page-0001.jpg"
   },
 
   {
@@ -2294,7 +2323,7 @@ const certData = [
     issuer: "Diperoleh dari HMJ Ilmu Komunikasi",
     year: "2024",
     description: `Comvaganza was a creative event that brought together competitions, an art exhibition, and a live music concert. I was involved in the planning and execution of the event, contributing to the development of the event concept, coordination, and overall event activities.<br><br><strong>Key Responsibilities:</strong><ul class="list-disc pl-5 mt-2 space-y-1"><li>Contributed to the development of the event concept and creative activities.</li><li>Assisted in planning and coordinating various event programs.</li><li>Supported the execution of competitions, art exhibitions, and live music performances.</li><li>Collaborated with team members and committees to ensure the event ran smoothly.</li><li>Assisted with communication and coordination throughout the event.</li></ul>`,
-    image: "assets/Sertifikat Comvag_page-0001.jpg"
+    image: "Sertifikat Comvag_page-0001.jpg"
   }
 
 ];
@@ -2320,14 +2349,12 @@ function openCertModal(dataList, headingText){
     photoBox.className = "h-52 rounded-2xl bg-gradient-to-br from-slate-700 via-slate-600 to-slate-400 flex items-center justify-center text-5xl text-white overflow-hidden";
     photoBox.textContent = "📜";
 
-    const img = new Image();
-    img.onload = function(){
+    tryLoadImage(data.image, function(img){
       photoBox.innerHTML = "";
       photoBox.className = "h-52 rounded-2xl overflow-hidden";
       img.className = "w-full h-full object-cover";
       photoBox.appendChild(img);
-    };
-    img.src = data.image;
+    });
 
     const info = document.createElement("div");
     info.className = "mt-4";
