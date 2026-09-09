@@ -9,6 +9,9 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,6 +54,8 @@ Nanda Raflie<span class="text-blue-600">.</span>
 
 <a href="#experience" class="hover:text-blue-700 transition">Experience</a>
 
+<a href="#projects" class="hover:text-blue-700 transition">Projects</a>
+
 <a href="#certificates" class="hover:text-blue-700 transition">Certificates </a>
 
 <a href="#skills" class="hover:text-blue-700 transition">Skills</a>
@@ -69,7 +74,7 @@ Nanda Raflie<span class="text-blue-600">.</span>
 
 <div class="max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-12 items-center">
 
-<div>
+<div data-aos="fade-right">
 
 <p class="uppercase tracking-[5px] text-blue-600 font-semibold mb-4">
 SOCIAL MEDIA SPECIALIST
@@ -115,29 +120,18 @@ View Portfolio
 
 </div>
 
-<div class="flex justify-center">
+<div class="flex justify-center" data-aos="zoom-in" data-aos-delay="200">
 
-<div class="w-96 h-96 rounded-full bg-gradient-to-br from-blue-900 via-blue-700 to-blue-400 flex items-center justify-center shadow-2xl">
+<div class="w-96 h-96 rounded-full p-2 bg-gradient-to-br from-blue-900 via-blue-600 to-blue-400 shadow-2xl mx-auto">
 
-<div class="w-80 h-80 rounded-full bg-white flex items-center justify-center">
+    <div class="w-full h-full rounded-full overflow-hidden bg-white">
 
-<div class="text-center">
+        <img
+            src="assets/nandafoto.jpeg"
+            alt="Nanda Raflie"
+            class="w-full h-full object-cover">
 
-<h2 class="text-3xl font-bold text-primary">
-Nanda Raflie
-</h2>
-
-<p class="text-gray-500 mt-2">
-Brand Manager
-</p>
-
-<p class="text-gray-500">
-Social Media Specialist
-</p>
-
-</div>
-
-</div>
+    </div>
 
 </div>
 
@@ -153,7 +147,7 @@ Social Media Specialist
 
     <div class="max-w-7xl mx-auto px-8">
 
-        <div class="text-center mb-16">
+        <div class="text-center mb-16" data-aos="fade-up">
 
             <p class="text-blue-600 uppercase tracking-[4px] font-semibold">
                 About Me
@@ -178,7 +172,7 @@ Social Media Specialist
 
             <!-- LEFT -->
 
-            <div>
+            <div data-aos="fade-right">
 
                 <h3 class="text-3xl font-bold text-primary mb-6">
                     Who Am I?
@@ -214,7 +208,7 @@ Social Media Specialist
 
             <!-- RIGHT -->
 
-            <div class="bg-slate-50 rounded-3xl p-10 shadow-lg">
+            <div class="bg-slate-50 rounded-3xl p-10 shadow-lg" data-aos="fade-left">
 
                 <h3 class="text-2xl font-bold text-primary mb-8">
                     Education
@@ -303,7 +297,7 @@ Social Media Specialist
 
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-24">
 
-            <div class="bg-white shadow-lg rounded-2xl p-8 text-center border">
+            <div class="bg-white shadow-lg rounded-2xl p-8 text-center border" data-aos="zoom-in">
 
                 <h3 class="text-5xl font-bold text-blue-600">
                     4+
@@ -315,7 +309,7 @@ Social Media Specialist
 
             </div>
 
-            <div class="bg-white shadow-lg rounded-2xl p-8 text-center border">
+            <div class="bg-white shadow-lg rounded-2xl p-8 text-center border" data-aos="zoom-in" data-aos-delay="100">
 
                 <h3 class="text-5xl font-bold text-blue-600">
                     100+
@@ -327,7 +321,7 @@ Social Media Specialist
 
             </div>
 
-            <div class="bg-white shadow-lg rounded-2xl p-8 text-center border">
+            <div class="bg-white shadow-lg rounded-2xl p-8 text-center border" data-aos="zoom-in" data-aos-delay="200">
 
                 <h3 class="text-5xl font-bold text-blue-600">
                     150%
@@ -339,7 +333,7 @@ Social Media Specialist
 
             </div>
 
-            <div class="bg-white shadow-lg rounded-2xl p-8 text-center border">
+            <div class="bg-white shadow-lg rounded-2xl p-8 text-center border" data-aos="zoom-in" data-aos-delay="300">
 
                 <h3 class="text-5xl font-bold text-blue-600">
                     10+
@@ -364,7 +358,7 @@ Social Media Specialist
 
         <!-- Heading -->
 
-        <div class="text-center mb-20">
+        <div class="text-center mb-20" data-aos="fade-up">
 
             <p class="text-blue-600 uppercase tracking-[4px] font-semibold">
                 Experience
@@ -388,7 +382,7 @@ Social Media Specialist
 
             <!-- Experience 1 -->
 
-            <div class="relative pl-10">
+            <div class="relative pl-10" data-aos="fade-up">
 
                 <div class="absolute -left-[18px] top-2 w-8 h-8 rounded-full bg-blue-600 border-4 border-white shadow-lg"></div>
 
@@ -396,7 +390,8 @@ Social Media Specialist
                     March 2025 – Present
                 </span>
 
-                <div class="bg-white rounded-2xl shadow-lg p-8 mt-4 hover:shadow-2xl transition">
+                <div onclick="openExpModal('brand-manager')"
+                    class="cursor-pointer bg-white rounded-2xl shadow-lg p-8 mt-4 hover:shadow-2xl hover:-translate-y-1 transition">
 
                     <h3 class="text-2xl font-bold text-primary">
                         Brand Manager
@@ -418,13 +413,17 @@ Social Media Specialist
 
                     </ul>
 
+                    <p class="text-sm font-semibold text-blue-600 mt-5">
+                        Klik untuk lihat detail →
+                    </p>
+
                 </div>
 
             </div>
 
             <!-- Experience 2 -->
 
-            <div class="relative pl-10">
+            <div class="relative pl-10" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="absolute -left-[18px] top-2 w-8 h-8 rounded-full bg-blue-600 border-4 border-white shadow-lg"></div>
 
@@ -432,7 +431,8 @@ Social Media Specialist
                     Oct 2023 – Mar 2025
                 </span>
 
-                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition">
+                <div onclick="openExpModal('learning-facilitator')"
+                    class="cursor-pointer bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-1 transition">
 
                     <h3 class="text-2xl font-bold text-primary">
                         Learning Facilitator
@@ -454,13 +454,17 @@ Social Media Specialist
 
                     </ul>
 
+                    <p class="text-sm font-semibold text-blue-600 mt-5">
+                        Klik untuk lihat detail →
+                    </p>
+
                 </div>
 
             </div>
 
             <!-- Experience 3 -->
 
-            <div class="relative pl-10">
+            <div class="relative pl-10" data-aos="fade-up" data-aos-delay="200">
 
                 <div class="absolute -left-[18px] top-2 w-8 h-8 rounded-full bg-blue-600 border-4 border-white shadow-lg"></div>
 
@@ -468,7 +472,8 @@ Social Media Specialist
                     Aug 2023 – Dec 2023
                 </span>
 
-                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition">
+                <div onclick="openExpModal('content-creator')"
+                    class="cursor-pointer bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-1 transition">
 
                     <h3 class="text-2xl font-bold text-primary">
                         Content Creator Intern (MSIB Batch 5)
@@ -490,13 +495,17 @@ Social Media Specialist
 
                     </ul>
 
+                    <p class="text-sm font-semibold text-blue-600 mt-5">
+                        Klik untuk lihat detail →
+                    </p>
+
                 </div>
 
             </div>
 
             <!-- Experience 4 -->
 
-            <div class="relative pl-10">
+            <div class="relative pl-10" data-aos="fade-up" data-aos-delay="300">
 
                 <div class="absolute -left-[18px] top-2 w-8 h-8 rounded-full bg-blue-600 border-4 border-white shadow-lg"></div>
 
@@ -504,7 +513,8 @@ Social Media Specialist
                     Sep 2020 – Aug 2021
                 </span>
 
-                <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition">
+                <div onclick="openExpModal('digital-marketing')"
+                    class="cursor-pointer bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl hover:-translate-y-1 transition">
 
                     <h3 class="text-2xl font-bold text-primary">
                         Digital Marketing
@@ -526,6 +536,10 @@ Social Media Specialist
 
                     </ul>
 
+                    <p class="text-sm font-semibold text-blue-600 mt-5">
+                        Klik untuk lihat detail →
+                    </p>
+
                 </div>
 
             </div>
@@ -536,6 +550,35 @@ Social Media Specialist
 
 </section>
 
+<!-- ================= EXPERIENCE DETAIL MODAL ================= -->
+
+<div id="expModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-[100] hidden items-center justify-center p-4">
+
+    <div id="expModalPanel" class="bg-white rounded-3xl w-full max-w-2xl max-h-[85vh] overflow-y-auto relative opacity-0 scale-95 transition-all duration-300">
+
+        <button onclick="closeExpModal()" aria-label="Tutup"
+            class="absolute top-5 right-5 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-slate-600 hover:bg-slate-100 transition z-10">
+            ✕
+        </button>
+
+        <div class="p-8 md:p-10">
+
+            <h3 id="expModalTitle" class="text-2xl md:text-3xl font-bold text-primary"></h3>
+
+            <p id="expModalCompany" class="text-gray-600 mt-2"></p>
+
+            <span id="expModalPeriod" class="inline-block mt-4 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold"></span>
+
+            <h4 class="text-lg font-bold text-primary mt-8 mb-2">Tentang Peran Ini</h4>
+
+            <div id="expModalDescription" class="text-gray-600 leading-7"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
 <!-- ================= PROJECTS ================= -->
 
 <section id="projects" class="py-24 bg-white">
@@ -544,7 +587,7 @@ Social Media Specialist
 
         <!-- Heading -->
 
-        <div class="text-center mb-16">
+        <div class="text-center mb-16" data-aos="fade-up">
 
             <p class="uppercase tracking-[4px] text-blue-600 font-semibold">
                 Portfolio
@@ -571,8 +614,135 @@ Social Media Specialist
 
             <!-- Project 1 -->
 
-            <div
-                class="bg-white border rounded-3xl shadow-lg overflow-hidden hover:-translate-y-3 hover:shadow-2xl transition duration-300">
+            <div onclick="openProjectModal('backyard-gdc')" data-aos="fade-up"
+                class="cursor-pointer bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-3 hover:shadow-2xl transition duration-300">
+
+                <div
+                    class="h-52 bg-gradient-to-br from-indigo-900 via-blue-700 to-cyan-500 flex items-center justify-center">
+
+                    <div class="text-center text-white">
+
+                        <h3 class="text-3xl font-bold">
+                            Backyard GDC
+                        </h3>
+
+                        <p class="mt-2">
+                            Music Event
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="p-8">
+
+                    <span
+                        class="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold">
+
+                        Event Promotion
+
+                    </span>
+
+                    <p class="mt-6 text-gray-600 leading-7">
+
+                        Developed and executed social media strategies to improve
+                        brand awareness, audience engagement, and online
+                        visibility for a music event campaign.
+
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 mt-6">
+
+                        <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">
+                            Event
+                        </span>
+
+                        <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">
+                            Campaign
+                        </span>
+
+                        <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">
+                            Engagement
+                        </span>
+
+                    </div>
+
+                    <p class="mt-6 text-sm font-semibold text-blue-600">
+                        Klik untuk lihat detail →
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Project 2 -->
+
+            <div onclick="openProjectModal('kelas-geti')" data-aos="fade-up" data-aos-delay="100"
+                class="cursor-pointer bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-3 hover:shadow-2xl transition duration-300">
+
+                <div class="h-52 bg-gradient-to-br from-blue-900 via-blue-700 to-cyan-500 flex items-center justify-center">
+
+                    <div class="text-center text-white">
+
+                        <h3 class="text-3xl font-bold">
+                            Kelas Geti
+                        </h3>
+
+                        <p class="mt-2">
+                            Project Manager
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="p-8">
+
+                    <span class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold">
+
+                        Social Media
+
+                    </span>
+
+                    <p class="mt-6 text-gray-600 leading-7">
+
+                        Managed social media production from content planning,
+                        scripting, videography, editing, and personal branding.
+
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 mt-6">
+
+                        <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">
+                            Content Planning
+                        </span>
+
+                        <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">
+                            Videography
+                        </span>
+
+                        <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">
+                            Video Editing
+                        </span>
+
+                        <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">
+                            Marketing
+                        </span>
+
+                    </div>
+
+                    <p class="mt-6 text-sm font-semibold text-blue-600">
+                        Klik untuk lihat detail →
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Project 3 -->
+
+            <div onclick="openProjectModal('taubisajago')" data-aos="fade-up" data-aos-delay="200"
+                class="cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidden hover:-translate-y-3 hover:shadow-2xl transition duration-300">
 
                 <div
                     class="h-52 bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 flex items-center justify-center">
@@ -625,198 +795,76 @@ Social Media Specialist
 
                     </div>
 
+                    <p class="mt-6 text-sm font-semibold text-blue-600">
+                        Klik untuk lihat detail →
+                    </p>
+
                 </div>
 
             </div>
 
-            <!-- Project 2 -->
+            <!-- Project 4 (dibuat full-width biar rapi, ga kesan sendirian) -->
 
-           <a
-href="https://www.instagram.com/kelas.geti"
-target="_blank"
-class="block bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-3 hover:shadow-2xl transition duration-300 cursor-pointer">
+            <div onclick="openProjectModal('steam-motor')" data-aos="fade-up"
+                class="md:col-span-2 lg:col-span-3 cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition duration-300 flex flex-col md:flex-row">
 
-    <!-- Bagian biru atas -->
-    <div class="h-52 bg-gradient-to-br from-blue-900 via-blue-700 to-cyan-500 flex items-center justify-center">
+                <img
+                    src="assets/Screenshot 2026-07-31 095109.PNG"
+                    alt="123 Motowash"
+                    class="w-full md:w-80 h-52 md:h-auto object-cover flex-shrink-0">
 
-        <div class="text-center text-white">
-
-            <h3 class="text-4xl font-bold">
-                Kelas Geti
-            </h3>
-
-            <p class="mt-2 text-xl">
-                Project Manager
-            </p>
-
-        </div>
-
-    </div>
-
-    <!-- Isi Card -->
-
-    <div class="p-8">
-
-        <span class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold">
-
-            Social Media
-
-        </span>
-
-        <p class="mt-6 text-gray-600 leading-8">
-
-            Managed social media production from content planning,
-            scripting, videography, editing, and personal branding.
-
-        </p>
-  <div class="flex flex-wrap gap-3 mt-8">
-
-    <span class="bg-slate-100 px-4 py-2 rounded-full text-sm">
-        Content Planning
-    </span>
-
-    <span class="bg-slate-100 px-4 py-2 rounded-full text-sm">
-        Videography
-    </span>
-
-    <span class="bg-slate-100 px-4 py-2 rounded-full text-sm">
-        Video Editing
-    </span>
-
-    <span class="bg-slate-100 px-4 py-2 rounded-full text-sm">
-        Marketing
-    </span>
-
-</div>
-    </div>
-
-</a>
-
-            <!-- Project 3 -->
-
-        <a
-href="https://www.instagram.com/backyard.gdcA"
-target="_blank"
-class="block cursor-pointer bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-3 hover:shadow-2xl transition duration-300">
-
-                <div
-                    class="h-52 bg-gradient-to-br from-indigo-900 via-blue-700 to-cyan-500 flex items-center justify-center">
-
-                    <div class="text-center text-white">
-
-                        <h3 class="text-3xl font-bold">
-                            Backyard GDC
-                        </h3>
-
-                        <p class="mt-2">
-                            Music Event
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <div class="p-8">
+                <div class="p-8 flex flex-col justify-center">
 
                     <span
-                        class="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold">
+                        class="inline-block bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold w-fit">
 
-                        Event Promotion
+                        Social Media Management
 
                     </span>
 
-                    <p class="mt-6 text-gray-600 leading-7">
+                    <h3 class="text-2xl font-bold text-primary mt-5">
 
-                        Developed and executed social media strategies to improve
-                        brand awareness, audience engagement, and online
-                        visibility for a music event campaign.
+                        123 Motowash Instagram
+
+                    </h3>
+
+                    <p class="mt-4 text-gray-600 leading-7">
+
+                        Managed Instagram content strategy, created promotional content,
+                        increased brand awareness, and supported business growth through
+                        engaging visual storytelling and consistent social media campaigns.
 
                     </p>
 
-                    <div class="flex flex-wrap gap-2 mt-6">
+                    <div class="flex flex-wrap gap-2 mt-5">
 
                         <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">
-                            Event
+                            Instagram
                         </span>
 
                         <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">
-                            Campaign
+                            Content Strategy
                         </span>
 
                         <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">
-                            Engagement
+                            Branding
+                        </span>
+
+                        <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">
+                            Marketing
                         </span>
 
                     </div>
+
+                    <p class="mt-5 text-sm font-semibold text-blue-600">
+                        Klik untuk lihat detail →
+                    </p>
 
                 </div>
 
             </div>
 
-        </a>
-<!-- Project 4 -->
-
-<a
-href="https://www.instagram.com/123_steammotor"
-target="_blank"
-class="block cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidden hover:-translate-y-3 hover:shadow-2xl transition duration-300">
-
-    <!-- Gambar -->
-
-    <img
-    src="assets/Screenshot 2026-07-31 095109.PNG"
-    alt="123 Motowash"
-    class="w-full h-56 object-cover">
-
-    <!-- Content -->
-
-    <div class="p-8">
-
-        <span
-        class="inline-block bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold">
-
-            Social Media Management
-
-        </span>
-
-        <h3 class="text-2xl font-bold text-primary mt-5">
-
-            123 Motowash Instagram
-
-        </h3>
-
-        <p class="mt-5 text-gray-600 leading-7">
-
-            Managed Instagram content strategy, created promotional content,
-            increased brand awareness, and supported business growth through
-            engaging visual storytelling and consistent social media campaigns.
-
-        </p>
-
-        <div class="flex flex-wrap gap-2 mt-6">
-
-            <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">
-                Instagram
-            </span>
-
-            <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">
-                Content Strategy
-            </span>
-
-            <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">
-                Branding
-            </span>
-
-            <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">
-                Marketing
-            </span>
-
         </div>
-
-    </div>
-
-</a>
-
         <!-- CTA -->
 
         <div class="mt-20 text-center">
@@ -847,6 +895,67 @@ class="block cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidde
 
 </section>
 
+<!-- ================= PROJECT DETAIL MODAL ================= -->
+
+<div id="projectModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-[100] hidden items-center justify-center p-4">
+
+    <div class="bg-white rounded-3xl w-full max-w-3xl max-h-[85vh] overflow-y-auto relative">
+
+        <button onclick="closeProjectModal()" aria-label="Tutup"
+            class="absolute top-5 right-5 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-slate-600 hover:bg-slate-100 transition z-10">
+            ✕
+        </button>
+
+        <div id="modalHeader" class="h-48 md:h-56 flex items-center justify-center rounded-t-3xl">
+            <div class="text-center text-white">
+                <h3 id="modalTitle" class="text-3xl md:text-4xl font-bold"></h3>
+                <p id="modalRole" class="mt-2"></p>
+            </div>
+        </div>
+
+        <div class="p-8 md:p-10">
+
+            <span id="modalCategory" class="inline-block px-4 py-2 rounded-full text-sm font-semibold"></span>
+
+            <h4 class="text-xl font-bold text-primary mt-8 mb-3">Ringkasan Proyek</h4>
+            <p id="modalDescription" class="text-gray-600 leading-7"></p>
+
+            <h4 class="text-xl font-bold text-primary mt-8 mb-3">Tools & Fokus Kerja</h4>
+            <div id="modalTools" class="flex flex-wrap gap-2"></div>
+
+            <h4 class="text-xl font-bold text-primary mt-8 mb-4">Performa Konten</h4>
+
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div class="bg-slate-50 rounded-2xl p-5">
+                    <div id="modalChartWrap" style="position:relative; height:220px;">
+                        <canvas id="modalChart"></canvas>
+                    </div>
+                    <div id="modalChartFallback" class="hidden space-y-4"></div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-5 flex flex-col items-center justify-center text-center">
+                    <p class="text-sm text-gray-500 uppercase tracking-wide font-semibold">Pertumbuhan Followers</p>
+                    <p id="modalGrowth" class="text-5xl font-extrabold text-blue-600 mt-3"></p>
+                    <p class="text-sm text-gray-500 mt-2">dibanding sebelum proyek ditangani</p>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-bold text-primary mt-8 mb-4">Galeri Konten</h4>
+            <div id="modalGallery" class="grid grid-cols-3 sm:grid-cols-5 gap-3"></div>
+
+            <div id="modalInstagramWrap" class="mt-10">
+                <a id="modalInstagramLink" href="#" target="_blank"
+                    class="block text-center bg-primary hover:bg-secondary transition text-white py-4 rounded-xl font-semibold">
+                    Lihat Instagram Aslinya
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 <!-- ================= CERTIFICATES ================= -->
 
 <section id="certificates" class="py-24 bg-slate-50">
@@ -855,7 +964,7 @@ class="block cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidde
 
         <!-- Section Title -->
 
-        <div class="text-center mb-16">
+        <div class="text-center mb-16" data-aos="fade-up">
 
             <span class="text-blue-600 uppercase tracking-[4px] font-semibold">
                 My Achievement
@@ -877,12 +986,11 @@ class="block cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidde
 
             <!-- Certificate 1 -->
 
-            <a href="https://drive.google.com/file/d/1O6b5TvZ-NXj6afyLc2peZIDyFTmCRUy2/view?usp=sharing"
-               target="_blank"
-               class="block bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition duration-300">
+            <div onclick="openCertModal([revouData], 'RevoU')" data-aos="fade-up"
+               class="cursor-pointer bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition duration-300">
 
                 <img
-                    src="assets/revou.jpg"
+                    src="assets/Sertifikat RevoU_pages-to-jpg-0001.jpg"
                     alt="RevoU Data Analytics"
                     class="w-full h-56 object-cover">
 
@@ -897,25 +1005,28 @@ class="block cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidde
                     </h3>
 
                     <p class="text-gray-600 mt-4">
-                        Data Analytics Certification
+                        Data Analytics Training Program
                     </p>
 
                     <p class="text-sm text-gray-500 mt-4">
                         Issued in 2024
                     </p>
 
+                    <p class="text-sm font-semibold text-blue-600 mt-4">
+                        Klik untuk lihat detail →
+                    </p>
+
                 </div>
 
-            </a>
+            </div>
 
             <!-- Certificate 2 -->
 
-            <a href="https://drive.google.com/file/d/1wTrTonwlXGr_nJCdGW14RiIU369Mm9j_/view?usp=sharing"
-               target="_blank"
-               class="block bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition duration-300">
+            <div onclick="openCertModal([msibData], 'MSIB Batch 5')" data-aos="fade-up" data-aos-delay="100"
+               class="cursor-pointer bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition duration-300">
 
                 <img
-                    src="assets/msib.jpg"
+                    src="assets/MSIB.jpg.jpg"
                     alt="MSIB ATT Group"
                     class="w-full h-56 object-cover">
 
@@ -930,25 +1041,28 @@ class="block cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidde
                     </h3>
 
                     <p class="text-gray-600 mt-4">
-                        ATT Group – Certified Independent Internship Program
+                        ATT Group – Magang & Studi Independen Bersertifikat
                     </p>
 
                     <p class="text-sm text-gray-500 mt-4">
                         Issued in 2023
                     </p>
 
+                    <p class="text-sm font-semibold text-blue-600 mt-4">
+                        Klik untuk lihat detail →
+                    </p>
+
                 </div>
 
-            </a>
+            </div>
 
             <!-- Certificate 3 -->
 
-            <a href="https://drive.google.com/file/d/1T9ZYsiR7vTHoMEa-nLIPbK5uuuK4Qb1Q/view?usp=sharing"
-               target="_blank"
-               class="block bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition duration-300">
+            <div onclick="openCertModal([getiData], 'GeTI Incubator')" data-aos="fade-up" data-aos-delay="200"
+               class="cursor-pointer bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition duration-300">
 
                 <img
-                    src="assets/geti.jpg"
+                    src="assets/Sertifikat Kompetensi Online Shop GeTI_page-0001.jpg"
                     alt="GeTI Incubator"
                     class="w-full h-56 object-cover">
 
@@ -963,22 +1077,120 @@ class="block cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidde
                     </h3>
 
                     <p class="text-gray-600 mt-4">
-                        Online Shop Certification
+                        E-Commerce Competency Certification
                     </p>
 
                     <p class="text-sm text-gray-500 mt-4">
                         Issued in 2023
                     </p>
 
+                    <p class="text-sm font-semibold text-blue-600 mt-4">
+                        Klik untuk lihat detail →
+                    </p>
+
                 </div>
 
-            </a>
+            </div>
 
         </div>
 
     </div>
 
 </section>
+
+<!-- OTHER CERTIFICATES -->
+
+<!-- ================= OTHER CERTIFICATES ================= -->
+
+<section id="other-certificates" class="py-24 bg-white">
+
+    <div class="max-w-7xl mx-auto px-8">
+
+        <div class="text-center mb-16" data-aos="fade-up">
+
+            <span class="text-blue-600 uppercase tracking-[4px] font-semibold">
+                More Achievements
+            </span>
+
+            <h2 class="text-4xl md:text-5xl font-bold text-primary mt-4">
+                Other Certificates
+            </h2>
+
+            <p class="text-gray-600 mt-5 max-w-2xl mx-auto leading-8">
+                Additional certifications, training programs, and professional
+                learning experiences.
+            </p>
+
+        </div>
+
+        <div class="max-w-2xl mx-auto">
+
+            <div onclick="openCertModal()" data-aos="fade-up"
+                class="cursor-pointer bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition duration-300">
+
+                <div class="bg-gradient-to-br from-blue-900 via-blue-600 to-blue-400 h-56 flex items-center justify-center">
+
+                    <div class="text-center text-white">
+
+                        <div class="text-5xl mb-4">📜</div>
+
+                        <h3 class="text-3xl font-bold">Other Certificates</h3>
+
+                        <p class="mt-2 text-lg">Additional Certifications</p>
+
+                    </div>
+
+                </div>
+
+                <div class="p-6">
+
+                    <span class="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold">
+                        More Certifications
+                    </span>
+
+                    <p class="text-gray-600 mt-4 leading-7">
+                        Explore my additional certifications, training programs,
+                        and professional learning experiences.
+                    </p>
+
+                    <p class="text-sm font-semibold text-blue-600 mt-4">
+                        Klik untuk lihat detail →
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CERTIFICATE DETAIL MODAL ================= -->
+
+<div id="certModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-[100] hidden items-center justify-center p-4">
+
+    <div id="certModalPanel" class="bg-white rounded-3xl w-full max-w-2xl max-h-[85vh] overflow-y-auto relative opacity-0 scale-95 transition-all duration-300">
+
+        <button onclick="closeCertModal()" aria-label="Tutup"
+            class="absolute top-5 right-5 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-slate-600 hover:bg-slate-100 transition z-10">
+            ✕
+        </button>
+
+        <div class="p-8 md:p-10">
+
+            <h3 id="certModalHeading" class="text-2xl md:text-3xl font-bold text-primary mb-8">
+                Other Certificates
+            </h3>
+
+            <div id="certModalList" class="space-y-10"></div>
+
+        </div>
+
+    </div>
+
+</div>
 
 <!-- ================= SKILLS ================= -->
 
@@ -988,7 +1200,7 @@ class="block cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidde
 
         <!-- Heading -->
 
-        <div class="text-center mb-20">
+        <div class="text-center mb-20" data-aos="fade-up">
 
             <p class="uppercase tracking-[4px] text-blue-600 font-semibold">
                 My Skills
@@ -1012,7 +1224,7 @@ class="block cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidde
 
             <!-- LEFT -->
 
-            <div class="space-y-8">
+            <div class="space-y-8" data-aos="fade-right">
 
                 <!-- Social Media -->
 
@@ -1140,7 +1352,7 @@ class="block cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidde
 
             <div>
 
-                <div class="bg-white rounded-3xl shadow-xl p-10">
+                <div class="bg-white rounded-3xl shadow-xl p-10" data-aos="fade-left">
 
                     <h3 class="text-2xl font-bold text-primary mb-8">
 
@@ -1220,7 +1432,7 @@ class="block cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidde
 
                 <!-- Extra -->
 
-                <div class="grid grid-cols-2 gap-6 mt-8">
+                <div class="grid grid-cols-2 gap-6 mt-8" data-aos="fade-left" data-aos-delay="100">
 
                     <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
 
@@ -1264,7 +1476,7 @@ class="block cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidde
 
         <!-- Heading -->
 
-        <div class="text-center mb-16">
+        <div class="text-center mb-16" data-aos="fade-up">
 
             <p class="uppercase tracking-[4px] text-blue-600 font-semibold">
                 Contact
@@ -1289,7 +1501,7 @@ class="block cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidde
 
             <!-- LEFT -->
 
-            <div class="space-y-6">
+            <div class="space-y-6" data-aos="fade-right">
 
                 <!-- Phone -->
 
@@ -1350,7 +1562,7 @@ class="block cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidde
                         </h3>
 
                         <p class="text-gray-600 mt-1">
-                            Bandar Lampung, Indonesia
+                            Tangerang Selatan, Indonesia
                         </p>
 
                     </div>
@@ -1387,7 +1599,7 @@ class="block cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidde
 
             <!-- RIGHT -->
 
-            <div class="bg-slate-50 rounded-3xl shadow-xl p-10">
+            <div class="bg-slate-50 rounded-3xl shadow-xl p-10" data-aos="fade-left">
 
                 <h3 class="text-3xl font-bold text-primary mb-6">
                     Ready to Build Something Great?
@@ -1484,6 +1696,11 @@ class="block cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidde
                 <a href="#projects"
                    class="hover:text-blue-300 transition">
                     Projects
+                </a>
+
+                <a href="#certificates"
+                   class="hover:text-blue-300 transition">
+                    Certificates
                 </a>
 
                 <a href="#contact"
@@ -1705,3 +1922,481 @@ scroll-behavior:smooth;
 }
 
 </style>
+<!-- ================= PROJECT MODAL DATA & LOGIC ================= -->
+
+<script>
+
+const projectsData = {
+
+  "backyard-gdc": {
+    title: "Backyard GDC",
+    role: "Music Event",
+    gradient: "bg-gradient-to-br from-indigo-900 via-blue-700 to-cyan-500",
+    badgeBg: "bg-purple-100",
+    badgeText: "text-purple-700",
+    badgeLabel: "Event Promotion",
+    description: `As a Social Media Specialist for BackyardGDC, a music event project, I contributed to developing and implementing social media strategies designed to increase brand visibility and audience engagement.<br><br>I was involved in managing social media activities and developing communication initiatives to build awareness around the event. This experience gave me practical exposure to event marketing, social media management, audience engagement, and digital brand communication.`,
+    tools: ["Event","Campaign","Engagement","Content Planning"],
+    views: [5000, 50000],
+    likes: [3000, 10000],
+    growth: 500,
+    instagram: "https://www.instagram.com/backyard.gdc/",
+    /* GANTI/TARUH foto lo di sini, urutan bebas, boleh kurang dari 5 */
+    images: [
+      "assets/backyard-gdc-1.png",
+      "assets/backyard-gdc-2.png",
+      "assets/backyard-gdc-3.png",
+      "assets/backyard-gdc-4.png",
+      "assets/backyard-gdc-5.png"
+    ]
+  },
+
+  "kelas-geti": {
+    title: "Kelas Geti",
+    role: "Project Manager",
+    gradient: "bg-gradient-to-br from-blue-900 via-blue-700 to-cyan-500",
+    badgeBg: "bg-green-100",
+    badgeText: "text-green-700",
+    badgeLabel: "Social Media",
+    description: `As a Project Manager and Social Media Specialist for Kelas.geti, I was involved in developing and executing digital content strategies to support the promotion of Prakerja training programs. My responsibilities covered multiple stages of the content production process, including content planning, scriptwriting, videography, video editing, and social media management.<br><br>I focused on creating soft-selling content that could communicate the value of the training programs in an engaging and accessible way. I also contributed to building the personal branding of GETI Incubator and creating educational technology-related content for digital audiences.<br><br>This project allowed me to combine my knowledge of communication with practical experience in content strategy, storytelling, social media, and video production.`,
+    tools: ["Content Planning","Videography","Video Editing","Marketing"],
+    views: [3000, 10000],
+    likes: [1000, 3000],
+    growth: 200,
+    instagram: "https://www.instagram.com/kelas.geti",
+    images: [
+      "assets/kelasgeti 1.png",
+      "assets/kelas geti 2.png",
+      "assets/kelas geti 3.png",
+      "assets/kelas geti 4.png",
+      "assets/kelas geti 5.png"
+    ]
+  },
+
+  "taubisajago": {
+    title: "TauBisaJago",
+    role: "Assistant Project Leader",
+    gradient: "bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500",
+    badgeBg: "bg-blue-100",
+    badgeText: "text-blue-700",
+    badgeLabel: "Digital Marketing",
+    description: `As an Assistant Project Leader in the marketing team for TauBisaJago, I worked closely with the Project Leader and marketing team to support the implementation of marketing strategies for the Prakerja training program.<br><br>I contributed to the coordination and execution of marketing activities while ensuring that the team's initiatives remained aligned with the project's objectives. This experience strengthened my ability to work within a team, coordinate tasks, communicate ideas, and adapt to the needs of an ongoing project.`,
+    tools: ["Marketing","Strategy","Teamwork"],
+    views: [1000, 5000],
+    likes: [1000, 5000],
+    growth: 200,
+    instagram: null,
+    images: [
+      "assets/taubisajago 1.png",
+      "assets/taubisajago 2.png",
+      "assets/taubisajago 3.png",
+      "assets/taubisajago 4.png",
+      "assets/taubisajago 5.png"
+    ]
+  },
+
+  "steam-motor": {
+    title: "123 Motowash Instagram",
+    role: "Social Media Management",
+    gradient: "bg-gradient-to-br from-orange-600 via-orange-500 to-amber-400",
+    badgeBg: "bg-orange-100",
+    badgeText: "text-orange-700",
+    badgeLabel: "Social Media Management",
+    description: "Managed Instagram content strategy, created promotional content, increased brand awareness, and supported business growth through engaging visual storytelling and consistent social media campaigns.",
+    tools: ["Instagram","Content Strategy","Branding","Marketing"],
+    views: [1000, 5000],
+    likes: [100, 1000],
+    growth: 200,
+    instagram: "https://www.instagram.com/123_steammotor",
+    images: [
+      "assets/steammotor 1.png",
+      "assets/steammotor 2.png",
+      "assets/steammotor 3.png",
+      "assets/steammotor 4.png",
+      "assets/steammotor 5.png"
+    ]
+  }
+
+};
+
+let modalChartInstance = null;
+
+function openProjectModal(id){
+
+  const data = projectsData[id];
+  if(!data) return;
+
+  const header = document.getElementById("modalHeader");
+  header.className = "h-48 md:h-56 flex items-center justify-center rounded-t-3xl " + data.gradient;
+
+  document.getElementById("modalTitle").textContent = data.title;
+  document.getElementById("modalRole").textContent = data.role;
+
+  const cat = document.getElementById("modalCategory");
+  cat.textContent = data.badgeLabel;
+  cat.className = "inline-block px-4 py-2 rounded-full text-sm font-semibold " + data.badgeBg + " " + data.badgeText;
+
+  document.getElementById("modalDescription").innerHTML = data.description;
+
+  const toolsWrap = document.getElementById("modalTools");
+  toolsWrap.innerHTML = "";
+  data.tools.forEach(function(t){
+    const span = document.createElement("span");
+    span.className = "bg-slate-100 px-3 py-1 rounded-full text-sm";
+    span.textContent = t;
+    toolsWrap.appendChild(span);
+  });
+
+  document.getElementById("modalGrowth").textContent = "+" + data.growth + "%";
+
+  const gallery = document.getElementById("modalGallery");
+  gallery.innerHTML = "";
+  data.images.forEach(function(src, i){
+    const box = document.createElement("div");
+    box.className = "aspect-square border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center text-gray-400 text-xs text-center px-1 overflow-hidden";
+    box.textContent = "Foto " + (i + 1);
+
+    const img = new Image();
+    img.onload = function(){
+      box.textContent = "";
+      box.className = "aspect-square rounded-xl overflow-hidden";
+      img.className = "w-full h-full object-cover";
+      box.appendChild(img);
+    };
+    img.src = src;
+
+    gallery.appendChild(box);
+  });
+
+  const igWrap = document.getElementById("modalInstagramWrap");
+  const igLink = document.getElementById("modalInstagramLink");
+  if(data.instagram){
+    igWrap.classList.remove("hidden");
+    igLink.href = data.instagram;
+  } else {
+    igWrap.classList.add("hidden");
+  }
+
+  if(modalChartInstance){
+    modalChartInstance.destroy();
+  }
+
+  const modal = document.getElementById("projectModal");
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+  document.body.style.overflow = "hidden";
+
+  const chartWrap = document.getElementById("modalChartWrap");
+  const chartFallback = document.getElementById("modalChartFallback");
+
+  try {
+    if(typeof Chart === "undefined"){
+      throw new Error("Chart.js belum termuat");
+    }
+    chartWrap.classList.remove("hidden");
+    chartFallback.classList.add("hidden");
+
+    const ctx = document.getElementById("modalChart").getContext("2d");
+    modalChartInstance = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: ["Views / post","Likes / post"],
+        datasets: [{
+          label: "Rentang estimasi",
+          data: [data.views, data.likes],
+          backgroundColor: ["#3B82F6","#1E3A8A"],
+          borderRadius: 6,
+          barThickness: 34
+        }]
+      },
+      options: {
+        indexAxis: "y",
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { x: { beginAtZero: true } }
+      }
+    });
+  } catch(err) {
+    console.error("Chart gagal dimuat, pakai tampilan teks:", err);
+    chartWrap.classList.add("hidden");
+    chartFallback.classList.remove("hidden");
+    chartFallback.innerHTML =
+      '<div><p class="text-sm font-semibold text-slate-500 mb-1">Views / post</p>' +
+      '<p class="text-2xl font-bold text-blue-600">' + data.views[0].toLocaleString("id-ID") + ' - ' + data.views[1].toLocaleString("id-ID") + '</p></div>' +
+      '<div><p class="text-sm font-semibold text-slate-500 mb-1">Likes / post</p>' +
+      '<p class="text-2xl font-bold text-blue-900">' + data.likes[0].toLocaleString("id-ID") + ' - ' + data.likes[1].toLocaleString("id-ID") + '</p></div>';
+  }
+}
+
+function closeProjectModal(){
+  const modal = document.getElementById("projectModal");
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+  document.body.style.overflow = "";
+}
+
+document.getElementById("projectModal").addEventListener("click", function(e){
+  if(e.target === this){
+    closeProjectModal();
+  }
+});
+
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    closeProjectModal();
+    closeCertModal();
+    closeExpModal();
+  }
+});
+
+/* ============ EXPERIENCE (Professional Journey) ============ */
+
+const expData = {
+
+  "brand-manager": {
+    title: "Brand Manager",
+    company: "123 Motowash",
+    period: "March 2025 – Present",
+    description: `As a Brand Manager at 123 Motowash, I am responsible for managing the overall brand development, customer experience, operational performance, and marketing activities. I focus on identifying opportunities to improve business performance through service optimization, customer engagement, and effective marketing strategies.<br><br>Within my first two months, I successfully contributed to a 150% increase in business revenue by optimizing operational workflows, improving service quality, and implementing targeted marketing initiatives. I also developed more structured working systems, maintained customer relationships, and provided basic training for new employees to ensure consistent service quality and team productivity.<br><br>This experience strengthened my understanding of how branding, marketing, customer experience, and business operations work together to create sustainable business growth.`
+  },
+
+  "learning-facilitator": {
+    title: "Learning Facilitator",
+    company: "LPK GETI Incubator",
+    period: "October 2023 – March 2025",
+    description: `As a Learning Facilitator at LPK GETI Incubator, I was involved in supporting participants throughout the Prakerja learning process. My role required me to communicate training information clearly, facilitate orientation sessions, explain learning objectives, and assist participants in understanding the training materials. Facilitated learning sessions and delivered presentations in front of 50+ participants, ensuring clear communication of learning materials and actively engaging participants throughout the sessions.<br><br>I regularly interacted with participants with different levels of understanding and communication styles, which trained me to adapt the way I delivered information and provide solutions to learning barriers. This experience significantly strengthened my public speaking, interpersonal communication, facilitation, and problem-solving skills.<br><br>Working closely with participants also taught me how to create a comfortable and engaging communication environment while maintaining professionalism and responsibility.`
+  },
+
+  "content-creator": {
+    title: "Content Creator Intern (MSIB Batch 5)",
+    company: "ATT Group",
+    period: "August 2023 – December 2023",
+    description: `During my MSIB Batch 5 internship at ATT Group, I gained hands-on experience in developing digital content across multiple formats, including articles, videos, graphics, and social media content. Contributed to content strategies that increased social media engagement by up to 200% through audience-focused content, trend research, and strategic content planning.<br><br>I was involved in the content creation process from research and idea development to content planning and execution. I conducted research on industry trends and audience preferences to develop content that was relevant and aligned with the brand's communication objectives. I also helped develop content calendars to maintain consistent publishing schedules and support marketing campaigns.<br><br>This experience allowed me to understand how creative ideas can be transformed into strategic content that not only attracts attention but also communicates a clear message to the target audience.`
+  },
+
+  "digital-marketing": {
+    title: "Digital Marketing",
+    company: "PT Asaubara Multi Konstruksi",
+    period: "September 2020 – August 2021",
+    description: `As a Digital Marketer in the property industry, I independently managed digital marketing activities using Facebook and WhatsApp Business as the primary channels. My responsibilities covered the process from lead generation, customer approach, follow-up, negotiation, to conversion.<br><br>During this period, I successfully achieved nearly 100 property sales closings, making this one of my most valuable experiences in understanding customer behavior and sales conversion. I learned how to identify potential customers, build trust through effective communication, understand their needs, and present products based on their preferences.<br><br>This experience strengthened my abilities in digital marketing, sales communication, negotiation, customer relationship management, and conversion strategy, while also teaching me how to work independently and remain focused on measurable business results.`
+  }
+
+};
+
+function openExpModal(id){
+
+  const data = expData[id];
+  if(!data) return;
+
+  document.getElementById("expModalTitle").textContent = data.title;
+  document.getElementById("expModalCompany").textContent = data.company;
+  document.getElementById("expModalPeriod").textContent = data.period;
+  document.getElementById("expModalDescription").innerHTML = data.description;
+
+  const modal = document.getElementById("expModal");
+  const panel = document.getElementById("expModalPanel");
+
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+  document.body.style.overflow = "hidden";
+
+  requestAnimationFrame(function(){
+    panel.classList.remove("opacity-0", "scale-95");
+    panel.classList.add("opacity-100", "scale-100");
+  });
+}
+
+function closeExpModal(){
+  const modal = document.getElementById("expModal");
+  const panel = document.getElementById("expModalPanel");
+
+  panel.classList.remove("opacity-100", "scale-100");
+  panel.classList.add("opacity-0", "scale-95");
+
+  setTimeout(function(){
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    document.body.style.overflow = "";
+  }, 200);
+}
+
+document.getElementById("expModal").addEventListener("click", function(e){
+  if(e.target === this){
+    closeExpModal();
+  }
+});
+
+/* ============ SERTIFIKAT UTAMA (RevoU, MSIB, GeTI) ============ */
+/* Data ini dipakai buat modal single-certificate di card atas.
+   Gambar udah pakai file asset yang sama kayak yang muncul di card. */
+
+const revouData = {
+  title: "RevoU",
+  issuer: "Data Analytics Training Program",
+  year: "2024",
+  description: `Completed a Data Analytics training program at RevoU, gaining foundational knowledge of how data can be collected, processed, analyzed, and transformed into actionable insights. The training introduced me to data-driven problem solving and the use of analytical approaches to support business and marketing decisions, including tools such as Google Sheets/Excel, SQL, and Python.<br><br><strong>Key Skills:</strong><br>Data Analysis · Data-Driven Decision Making · Problem Solving · Business Insight`,
+  image: "assets/Sertifikat RevoU_pages-to-jpg-0001.jpg"
+};
+
+const msibData = {
+  title: "MSIB Batch 5",
+  issuer: "ATT Group – Magang & Studi Independen Bersertifikat",
+  year: "2023",
+  description: `Participated in MSIB Batch 5 at ATT Group, gaining hands-on experience in a professional work environment while developing practical skills through structured projects and workplace activities. The program strengthened my ability to work collaboratively, communicate effectively, manage responsibilities, and adapt to professional workflows.<br><br><strong>Key Skills:</strong><br>Professional Communication · Teamwork · Project Management · Adaptability · Problem Solving`,
+  image: "assets/MSIB.jpg.jpg"
+};
+
+const getiData = {
+  title: "GeTI Incubator",
+  issuer: "E-Commerce Competency Certification",
+  year: "2023",
+  description: `Completed an online E-Commerce Competency Certification program at GETI, developing practical knowledge of e-commerce operations and digital business processes. The program strengthened my understanding of online commerce, digital marketing, customer engagement, and the overall e-commerce ecosystem.<br><br><strong>Key Skills:</strong><br>E-Commerce · Digital Marketing · Online Business · Customer Engagement · Digital Commerce`,
+  image: "assets/Sertifikat Kompetensi Online Shop GeTI_page-0001.jpg"
+};
+
+/* ============ OTHER CERTIFICATES ============ */
+
+/* GANTI isi array di bawah ini sesuai 4 sertifikat asli lo.
+   Gambar otomatis kedeteksi kalau file dengan nama yang sama
+   ada di folder assets (lihat "image" masing-masing, tinggal
+   ganti nama filenya kalau mau, yang penting namanya cocok
+   dengan file yang lo simpan). */
+
+const certData = [
+
+  {
+    title: "AISEC Widyawiyata",
+    issuer: "Diperoleh dari AISEC Unila",
+    year: "2024",
+    description: `Participated in Widyawita, an AIESEC social impact project focused on children's development and environmental awareness. Collaborated with AIESEC members from 20+ countries, gaining experience in cross-cultural communication, teamwork, and international collaboration.<br><br><strong>Key Experience:</strong><ul class="list-disc pl-5 mt-2 space-y-1"><li>Collaborated with international participants from 20+ countries.</li><li>Contributed to activities focused on children and environmental awareness.</li><li>Worked in a multicultural team to support project activities and objectives.</li><li>Developed communication, teamwork, adaptability, and cross-cultural collaboration skills.</li></ul>`,
+    image: "assets/sertifikat widyawitama.png"
+  },
+
+  {
+    title: "GeTI Internship",
+    issuer: "PT Global Edukasi Talenta Inkubator (GETI)",
+    year: "2023",
+    description: `Completed an internship at PT Global Edukasi Talenta Inkubator (GETI), supporting various business unit activities related to digital content, educational programs, and communication materials.<br><br><strong>Key Responsibilities:</strong><ul class="list-disc pl-5 mt-2 space-y-1"><li>Created content plans for GETI classes.</li><li>Developed copywriting for class content.</li><li>Edited video content for GETI's digital platforms.</li><li>Created PPT, PTP, and RPP materials for Prakerja programs.</li><li>Served as an ATP (Assistant Trainer/Teaching Personnel) substitute for Prakerja classes.</li><li>Rewrote articles related to UMKM and Exporthub.id.</li><li>Created quiz materials for Prakerja programs.</li><li>Assisted Disnaker activities and supported the Prakerja team.</li></ul>`,
+    image: "assets/Sertifikat Magang GeTI_page-0002.jpg"
+  },
+
+  {
+    title: "HMJ Broadcasting",
+    issuer: "Diperoleh dari HMJ Ilmu Komunikasi unula",
+    year: "2024",
+    description: `Actively involved in broadcasting, content production, and creative event projects through the Broadcasting Division of the Communication Studies Student Association.<br><br><strong>Key Projects &amp; Achievements:</strong><br><br><strong>🎙️ Podcast Production</strong><ul class="list-disc pl-5 mt-2 space-y-1"><li>Produced and developed podcast content covering the concept development, production, and content planning stages.</li><li>Published podcast episodes on YouTube and Spotify.</li><li>Collaborated with Unila TV to produce a podcast collaboration that was broadcast through the university's television platform.</li></ul><br><strong>🎬 Short Movie Production</strong><ul class="list-disc pl-5 mt-2 space-y-1"><li>Participated in the production of a short film for a 2024 film festival.</li><li>Contributed to the creative and production process, from concept development to filming and post-production.</li><li>Won an award at the 2024 film festival. 🏆</li></ul>`,
+    image: "assets/Sertifikat HMJ BROADCAST_page-0001.jpg"
+  },
+
+  {
+    title: "Comvaganza",
+    issuer: "Diperoleh dari HMJ Ilmu Komunikasi",
+    year: "2024",
+    description: `Comvaganza was a creative event that brought together competitions, an art exhibition, and a live music concert. I was involved in the planning and execution of the event, contributing to the development of the event concept, coordination, and overall event activities.<br><br><strong>Key Responsibilities:</strong><ul class="list-disc pl-5 mt-2 space-y-1"><li>Contributed to the development of the event concept and creative activities.</li><li>Assisted in planning and coordinating various event programs.</li><li>Supported the execution of competitions, art exhibitions, and live music performances.</li><li>Collaborated with team members and committees to ensure the event ran smoothly.</li><li>Assisted with communication and coordination throughout the event.</li></ul>`,
+    image: "assets/Sertifikat Comvag_page-0001.jpg"
+  }
+
+];
+
+let certScrollObserver = null;
+
+function openCertModal(dataList, headingText){
+
+  dataList = dataList || certData;
+  headingText = headingText || "Other Certificates";
+
+  document.getElementById("certModalHeading").textContent = headingText;
+
+  const list = document.getElementById("certModalList");
+  list.innerHTML = "";
+
+  dataList.forEach(function(data, index){
+
+    const item = document.createElement("div");
+    item.className = "cert-scroll-item opacity-0 translate-y-8 transition-all duration-700 ease-out";
+
+    const photoBox = document.createElement("div");
+    photoBox.className = "h-52 rounded-2xl bg-gradient-to-br from-slate-700 via-slate-600 to-slate-400 flex items-center justify-center text-5xl text-white overflow-hidden";
+    photoBox.textContent = "📜";
+
+    const img = new Image();
+    img.onload = function(){
+      photoBox.innerHTML = "";
+      photoBox.className = "h-52 rounded-2xl overflow-hidden";
+      img.className = "w-full h-full object-cover";
+      photoBox.appendChild(img);
+    };
+    img.src = data.image;
+
+    const info = document.createElement("div");
+    info.className = "mt-4";
+    info.innerHTML =
+      '<h4 class="text-xl font-bold text-primary">' + data.title + '</h4>' +
+      '<p class="text-gray-600 mt-1">' + data.issuer + '</p>' +
+      '<span class="inline-block mt-3 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">Issued in ' + data.year + '</span>' +
+      '<div class="text-gray-600 leading-7 mt-4">' + data.description + '</div>';
+
+    item.appendChild(photoBox);
+    item.appendChild(info);
+
+    if(index < dataList.length - 1){
+      const divider = document.createElement("hr");
+      divider.className = "mt-10 border-slate-200";
+      item.appendChild(divider);
+    }
+
+    list.appendChild(item);
+  });
+
+  const modal = document.getElementById("certModal");
+  const panel = document.getElementById("certModalPanel");
+
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+  document.body.style.overflow = "hidden";
+
+  requestAnimationFrame(function(){
+    panel.classList.remove("opacity-0", "scale-95");
+    panel.classList.add("opacity-100", "scale-100");
+  });
+
+  if(certScrollObserver){
+    certScrollObserver.disconnect();
+  }
+
+  certScrollObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.remove("opacity-0", "translate-y-8");
+        entry.target.classList.add("opacity-100", "translate-y-0");
+      }
+    });
+  }, { root: panel, threshold: 0.15 });
+
+  document.querySelectorAll(".cert-scroll-item").forEach(function(el){
+    certScrollObserver.observe(el);
+  });
+}
+
+function closeCertModal(){
+  const modal = document.getElementById("certModal");
+  const panel = document.getElementById("certModalPanel");
+
+  panel.classList.remove("opacity-100", "scale-100");
+  panel.classList.add("opacity-0", "scale-95");
+
+  setTimeout(function(){
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    document.body.style.overflow = "";
+  }, 200);
+}
+
+document.getElementById("certModal").addEventListener("click", function(e){
+  if(e.target === this){
+    closeCertModal();
+  }
+});
+
+</script>
