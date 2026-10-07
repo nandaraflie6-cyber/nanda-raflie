@@ -35,13 +35,33 @@
     </script>
 
 <style>html{scroll-behavior:smooth;scroll-padding-top:96px}</style>
+<style>/* ===== Zebra background (A) ===== */
+.dk{background:radial-gradient(900px 420px at 85% -5%,rgba(59,130,246,.28),transparent 60%),radial-gradient(700px 380px at 0% 105%,rgba(34,211,238,.16),transparent 60%),#0B1222!important;color:#E2E8F0}
+.dk .text-primary{color:#fff!important}
+.dk .bg-white,.dk .bg-slate-50,.dk .bg-slate-100{color:#1E293B}
+.dk .text-gray-600,.dk .text-gray-500{color:#CBD5E1!important}
+.dk .text-blue-600{color:#60A5FA!important}
+.dk .bg-white .text-primary,.dk .bg-slate-50 .text-primary{color:#0F172A!important}
+.dk .bg-white .text-gray-600,.dk .bg-slate-50 .text-gray-600{color:#4B5563!important}
+.dk .bg-white .text-gray-500,.dk .bg-slate-50 .text-gray-500{color:#6B7280!important}
+.dk .bg-white .text-blue-600,.dk .bg-slate-50 .text-blue-600{color:#2563EB!important}
+.dk a.bg-primary{background:#3B82F6!important}
+.dk .border-primary{border-color:#fff!important;color:#fff!important}
+.dk .bg-blue-50{background:rgba(59,130,246,.16)!important;color:#BFDBFE!important;border-color:rgba(147,197,253,.3)!important}
+.dk .border-blue-600{border-color:#3B82F6!important}
+.lt-grid{background-color:#F8FAFC!important;background-image:radial-gradient(#CBD5E1 1px,transparent 1px)!important;background-size:22px 22px!important}
+.lt-mesh{background:radial-gradient(700px 320px at 8% 0%,#DBEAFE,transparent 60%),radial-gradient(700px 320px at 92% 100%,#E0F2FE,transparent 60%),#fff!important}
+nav.ndk{background:rgba(11,18,34,.85)!important}
+nav.ndk a{color:#E2E8F0!important} nav.ndk a span{color:#60A5FA!important}
+
+</style>
 </head>
 
 <body class="bg-gray-50 text-slate-800 font-sans scroll-smooth">
 
 <!-- ================= NAVBAR ================= -->
 
-<nav class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+<nav class="ndk fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
 
 <div class="max-w-7xl mx-auto flex justify-between items-center px-8 py-5">
 
@@ -75,7 +95,7 @@ Nanda Raflie<span class="text-blue-600">.</span>
 
 <!-- ================= HERO ================= -->
 
-<section class="min-h-screen flex items-center pt-32 pb-20 overflow-x-hidden">
+<section class="dk min-h-screen flex items-center pt-32 pb-20 overflow-x-hidden">
 
 <div class="max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-12 items-center">
 
@@ -157,7 +177,7 @@ View Portfolio
 
 <!-- ================= ABOUT ================= -->
 
-<section id="about" class="py-24 bg-white">
+<section id="about" class="lt-mesh py-24 bg-white">
 
     <div class="max-w-7xl mx-auto px-8">
 
@@ -330,7 +350,7 @@ View Portfolio
 </section>
 <!-- ================= SERVICES / WHAT I DO ================= -->
 
-<section id="services" class="py-24 bg-white">
+<section id="services" class="dk py-24 bg-white">
 
     <div class="max-w-7xl mx-auto px-8">
 
@@ -409,7 +429,7 @@ View Portfolio
 
 <!-- ================= EXPERIENCE ================= -->
 
-<section id="experience" class="py-24 bg-slate-50">
+<section id="experience" class="lt-grid py-24 bg-slate-50">
 
     <div class="max-w-7xl mx-auto px-8">
 
@@ -963,11 +983,11 @@ let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>
                     <div class="w-full h-full rounded-[20px] bg-white overflow-hidden text-slate-800">
                         <div class="bg-blue-700 text-white text-[10px] font-bold px-3 py-2">Rekap Steam</div>
                         <div class="p-2 space-y-1.5 text-[8px]">
-                            <div class="border rounded px-1.5 py-1 flex justify-between"><span class="text-slate-400">Tanggal</span><span>Hari ini</span></div>
-                            <div class="border rounded px-1.5 py-1 flex justify-between"><span class="text-slate-400">Omset</span><span>Rp •••</span></div>
-                            <div class="border rounded px-1.5 py-1 flex justify-between"><span class="text-slate-400">QRIS</span><span>Rp •••</span></div>
-                            <div class="border rounded px-1.5 py-1 flex justify-between"><span class="text-slate-400">Jumlah motor</span><span>••</span></div>
-                            <div class="border rounded px-1.5 py-1 flex justify-between"><span class="text-slate-400">Pengeluaran</span><span>Rp •••</span></div>
+                            <div class="border rounded px-1.5 py-1 flex justify-between"><span class="text-slate-500">Tanggal</span><span>Hari ini</span></div>
+                            <div class="border rounded px-1.5 py-1 flex justify-between"><span class="text-slate-500">Omset</span><span>Rp •••</span></div>
+                            <div class="border rounded px-1.5 py-1 flex justify-between"><span class="text-slate-500">QRIS</span><span>Rp •••</span></div>
+                            <div class="border rounded px-1.5 py-1 flex justify-between"><span class="text-slate-500">Jumlah motor</span><span>••</span></div>
+                            <div class="border rounded px-1.5 py-1 flex justify-between"><span class="text-slate-500">Pengeluaran</span><span>Rp •••</span></div>
                             <div class="bg-blue-600 text-white text-center rounded py-1 font-semibold">Simpan</div>
                             <div class="pt-1 flex items-end gap-1 h-12">
                                 <div class="flex-1 bg-blue-200 rounded-sm h-[40%]"></div><div class="flex-1 bg-blue-300 rounded-sm h-[55%]"></div><div class="flex-1 bg-blue-400 rounded-sm h-[50%]"></div><div class="flex-1 bg-blue-500 rounded-sm h-[70%]"></div><div class="flex-1 bg-blue-600 rounded-sm h-[85%]"></div><div class="flex-1 bg-blue-700 rounded-sm h-full"></div>
@@ -1042,7 +1062,7 @@ let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>
 
 <!-- ================= PROJECTS ================= -->
 
-<section id="projects" class="py-24 bg-white">
+<section id="projects" class="lt-mesh py-24 bg-white">
 
     <div class="max-w-7xl mx-auto px-8">
 
@@ -1471,7 +1491,7 @@ let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>
 
 <!-- ================= CERTIFICATES ================= -->
 
-<section id="certificates" class="py-24 bg-slate-50">
+<section id="certificates" class="dk py-24 bg-slate-50">
 
     <div class="max-w-7xl mx-auto px-8">
 
@@ -1615,7 +1635,7 @@ let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>
 
 <!-- ================= OTHER CERTIFICATES ================= -->
 
-<section id="other-certificates" class="py-24 bg-white">
+<section id="other-certificates" class="lt-grid py-24 bg-white">
 
     <div class="max-w-7xl mx-auto px-8">
 
@@ -1707,7 +1727,7 @@ let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>
 
 <!-- ================= SKILLS ================= -->
 
-<section id="skills" class="py-24 bg-slate-50">
+<section id="skills" class="dk py-24 bg-slate-50">
 
     <div class="max-w-7xl mx-auto px-8">
 
@@ -1792,7 +1812,7 @@ let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>
 
 <!-- ================= CONTACT ================= -->
 
-<section id="contact" class="py-24 bg-white">
+<section id="contact" class="lt-mesh py-24 bg-white">
 
     <div class="max-w-7xl mx-auto px-8">
 
@@ -1810,8 +1830,8 @@ let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>
 
             <p class="max-w-2xl mx-auto mt-6 text-gray-600 leading-8">
 
-                Interested in collaborating on digital marketing,
-                social media campaigns, or content creation?
+                Looking for someone to grow a brand, run campaigns,
+                make sense of the numbers, or build a simple tool?
                 Feel free to reach out. I'd love to discuss how we can
                 create something impactful together.
 
@@ -1929,24 +1949,23 @@ let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>
 
                 <p class="text-gray-600 leading-8 mb-8">
 
-                    Whether you need a Social Media Specialist,
-                    Brand Manager, Digital Marketing professional,
-                    or Content Creator, I'm always excited to work
-                    on creative and meaningful projects.
+                    Whether you need a Brand Manager, Digital Marketer,
+                    Business Analyst, or Content Creator, I'm ready to bring
+                    the same energy I put into building my own brand.
 
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-5">
 
                     <a href="mailto:nandaraflie6@gmail.com"
-                        class="bg-primary text-white text-center py-4 rounded-xl font-semibold hover:bg-secondary transition">
+                        class="flex-1 px-8 bg-primary text-white text-center py-4 rounded-xl font-semibold hover:bg-secondary transition">
 
                         Send Email
 
                     </a>
 
                     <a href="tel:+6285156157099"
-                        class="border-2 border-primary text-primary text-center py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition">
+                        class="flex-1 px-8 border-2 border-primary text-primary text-center py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition">
 
                         Call Me
 
@@ -1992,7 +2011,7 @@ let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>
 
                 <p class="text-slate-300 mt-2">
 
-                    Social Media Specialist • Brand Manager • Digital Marketing
+                    Founder &amp; Brand Manager • Digital Marketer • Builder
 
                 </p>
 
@@ -2077,7 +2096,7 @@ once:true
 
 <script>
 
-const text="Social Media Specialist";
+const text="Founder & Brand Manager";
 
 let i=0;
 
@@ -2296,11 +2315,11 @@ const projectsData = {
     instagram: "https://www.instagram.com/backyard.gdc/",
     /* GANTI/TARUH foto lo di sini, urutan bebas, boleh kurang dari 5 */
     images: [
-      "backyard-gdc-1.jpg",
-      "backyard-gdc-2.jpg",
-      "backyard-gdc-3.jpg",
-      "backyard-gdc-4.jpg",
-      "backyard-gdc-5.jpg"
+      "backyard-gdc-1.png",
+      "backyard-gdc-2.png",
+      "backyard-gdc-3.png",
+      "backyard-gdc-4.png",
+      "backyard-gdc-5.png"
     ]
   },
 
@@ -2634,7 +2653,7 @@ const certData = [
     issuer: "Diperoleh dari AISEC Unila",
     year: "2024",
     description: `Participated in Widyawita, an AIESEC social impact project focused on children's development and environmental awareness. Collaborated with AIESEC members from 20+ countries, gaining experience in cross-cultural communication, teamwork, and international collaboration.<br><br><strong>Key Experience:</strong><ul class="list-disc pl-5 mt-2 space-y-1"><li>Collaborated with international participants from 20+ countries.</li><li>Contributed to activities focused on children and environmental awareness.</li><li>Worked in a multicultural team to support project activities and objectives.</li><li>Developed communication, teamwork, adaptability, and cross-cultural collaboration skills.</li></ul>`,
-    image: "sertifikat widyawitama.jpg"
+    image: "sertifikat widyawitama.png"
   },
 
   {
