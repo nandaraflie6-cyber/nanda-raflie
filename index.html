@@ -3112,17 +3112,16 @@ function setupProjectCards(){
     var d = m && projectsData[m[1]]; if (!d || !d.images || !d.images.length) return;
     var first = card.firstElementChild; if (!first) return;
 
+    var srcs = d.images;
     if (first.tagName === "IMG"){
-      // full-width card with a screenshot: swap the picture in place
-      var list = [first.getAttribute("src")].concat(d.images);
-      first.classList.add("pc-swap");
-      var k = 0;
-      cardLoops.push({ el: card, step: function(){
-        k = (k+1) % list.length;
-        first.classList.add("fade");
-        setTimeout(function(){ loadInto(first, list[k]); first.onload = function(){ first.classList.remove("fade"); }; }, 500);
-      }});
-      return;
+      // full-width card with a screenshot: turn it into the same blue living cover
+      srcs = [first.getAttribute("src")].concat(d.images);
+      var wrap = document.createElement("div");
+      wrap.className = first.className.replace("object-cover", "");
+      wrap.style.backgroundImage = "linear-gradient(135deg,#312e81,#1d4ed8 55%,#06b6d4)";
+      wrap.style.minHeight = "13rem";
+      first.replaceWith(wrap);
+      first = wrap;
     }
 
     // gradient cover: put photos behind a translucent version of the same gradient
@@ -3133,8 +3132,8 @@ function setupProjectCards(){
     var media = document.createElement("div"); media.className = "pc-media";
     var over = document.createElement("div"); over.className = "pc-overlay"; over.style.backgroundImage = bg;
     var ui = document.createElement("div"); ui.className = "pc-ui";
-    var chip = document.createElement("div"); chip.className = "pc-chip"; chip.innerHTML = "<b></b>" + d.images.length + " assets";
-    var imgs = d.images.map(function(src, i){
+    var chip = document.createElement("div"); chip.className = "pc-chip"; chip.innerHTML = "<b></b>" + srcs.length + " assets";
+    var imgs = srcs.map(function(src, i){
       var im = document.createElement("img"); im.alt = ""; im.loading = "lazy";
       loadInto(im, src); if (i === 0) im.className = "on";
       media.appendChild(im);
@@ -3185,6 +3184,7 @@ function similar(a, b){
 function findGroups(root){
   var out = [];
   root.querySelectorAll("*").forEach(function(el){
+    if (el.closest(".fl-stage")) return;
     var kids = Array.prototype.filter.call(el.children, function(c){ return c.offsetWidth > 0; });
     if (kids.length < 3 || kids.length > 12) return;
     if (!kids.every(function(k){ return similar(k, kids[0]); })) return;
@@ -3355,5 +3355,205 @@ function setupCountUp(){
 
 function init(){ setupProjectCards(); setupTilt(); setupCursor(); setupCountUp(); }
 if (document.readyState === "complete") init(); else window.addEventListener("load", init);
+})();
+</script>
+
+<!-- ================= BUILDS: AUTO-SLIDING SCREENS ================= -->
+<style>
+.fl-stage{position:relative;overflow:hidden;border-radius:20px;background:linear-gradient(135deg,#1e1b4b 0%,#1e3a8a 35%,#1d4ed8 70%,#0891b2 100%);isolation:isolate;user-select:none;touch-action:pan-y;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.fl-stage::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 0%,rgba(125,211,252,.35),transparent 70%),radial-gradient(40% 40% at 90% 100%,rgba(99,102,241,.35),transparent 70%);z-index:0;pointer-events:none}
+.fl-slide{position:absolute;left:50%;top:46%;transition:transform .8s cubic-bezier(.22,.9,.3,1),opacity .8s ease,filter .8s ease;will-change:transform;z-index:1}
+.fl-slide.on{cursor:pointer}
+.fl-stage .text-slate-700,.fl-stage .text-slate-500{color:#fff!important}
+.fl-stage .fl-slide>.text-center{margin-top:.6rem}
+.fl-frame{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 24px 50px -14px rgba(0,0,0,.6)}
+.fl-frame .bar{background:#1e293b;padding:7px 10px;display:flex;gap:5px;align-items:center}
+.fl-frame .bar i{width:9px;height:9px;border-radius:9px;display:block}
+.fl-frame .bar span{margin-left:8px;background:#334155;color:#cbd5e1;font-size:10px;padding:1px 10px;border-radius:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fl-frame img{display:block;width:100%;object-fit:cover;object-position:top}
+.fl-cap{position:absolute;left:0;right:0;bottom:30px;text-align:center;color:#fff;font-size:12px;font-weight:600;z-index:30;text-shadow:0 1px 6px rgba(0,0,0,.5);padding:0 50px;pointer-events:none}
+.fl-dots{position:absolute;left:0;right:0;bottom:14px;z-index:30;display:flex;gap:6px;justify-content:center}
+.fl-dots button{width:7px;height:7px;border-radius:9px;background:rgba(255,255,255,.4);border:0;padding:0;transition:all .35s;cursor:pointer}
+.fl-dots button.on{width:22px;background:#fff}
+.fl-nav{position:absolute;top:calc(46% - 18px);z-index:30;width:36px;height:36px;border-radius:999px;background:rgba(255,255,255,.16);backdrop-filter:blur(8px);color:#fff;font-size:18px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;opacity:.0}
+.fl-stage:hover .fl-nav{opacity:1}
+@media (pointer:coarse){.fl-nav{opacity:1}}
+.fl-nav:hover{background:rgba(255,255,255,.32);transform:scale(1.08)}
+.fl-prev{left:10px}.fl-next{right:10px}
+.fl-prog{position:absolute;left:0;bottom:0;height:3px;z-index:30;background:linear-gradient(90deg,#38bdf8,#a5b4fc);width:0}
+.fl-prog.run{animation:pmProg linear forwards}
+.fl-stage.paused .fl-prog{animation-play-state:paused}
+.fl-chip{position:absolute;top:12px;right:12px;z-index:30;font-size:11px;font-weight:700;color:#fff;background:rgba(0,0,0,.28);backdrop-filter:blur(6px);padding:4px 10px;border-radius:999px;display:flex;gap:6px;align-items:center}
+.fl-chip b{width:7px;height:7px;border-radius:9px;background:#34d399;display:inline-block;animation:pcLive 1.4s infinite}
+</style>
+<script>
+(function(){
+"use strict";
+if (typeof infoData === "undefined") return;
+var REDUCED = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- pull the "screens" out of each build's pop-up visual ---------- */
+function frame(src, url){
+  var f = document.createElement("div"); f.className = "fl-frame";
+  f.innerHTML = '<div class="bar"><i style="background:#f87171"></i><i style="background:#fbbf24"></i><i style="background:#34d399"></i><span></span></div>';
+  f.querySelector("span").textContent = url;
+  var im = document.createElement("img"); im.src = src; im.alt = ""; im.loading = "lazy"; f.appendChild(im);
+  return f;
+}
+function getSlides(id){
+  var d = infoData[id]; if (!d) return null;
+  var tmp = document.createElement("div"); tmp.innerHTML = d.visual;
+  if (tmp.querySelector("#ytMain")){
+    var out = [];
+    tmp.querySelectorAll("button").forEach(function(b){
+      var oc = b.getAttribute("onclick") || "";
+      var src = (oc.match(/src='([^']+)'/) || [])[1];
+      var cap = (oc.match(/textContent='([^']+)'/) || [])[1] || "";
+      if (src) out.push({ node: frame(src, "trending-youtube-indonesia.vercel.app"), cap: cap, kind: "wide" });
+    });
+    return out;
+  }
+  var row = tmp.querySelector(".overflow-x-auto");
+  if (row) return Array.prototype.map.call(row.children, function(c){ return { node: c, cap: "", kind: "phone" }; });
+  var grid = tmp.querySelector(".grid");
+  if (grid && grid.children.length >= 2) return Array.prototype.map.call(grid.children, function(c){ return { node: c, cap: "", kind: "browser" }; });
+  return null;
+}
+
+/* ---------- coverflow made of real DOM screens ---------- */
+function makeFlow(host, slides, opt){
+  opt = opt || {};
+  var st = document.createElement("div"); st.className = "fl-stage";
+  st.style.height = opt.height || "320px";
+  host.appendChild(st);
+  var els = slides.map(function(s){
+    var w = document.createElement("div"); w.className = "fl-slide";
+    if (s.kind === "wide"){ w.style.width = opt.wide || "78%"; w.style.top = "44%"; }
+    w._kind = s.kind;
+    if (s.kind === "browser") w.style.width = opt.browser || "280px";
+    w.appendChild(s.node.cloneNode ? s.node : s.node);
+    st.appendChild(w);
+    return w;
+  });
+  st.insertAdjacentHTML("beforeend",
+    '<div class="fl-chip"><b></b>' + (opt.label || "Live screens") + '</div>' +
+    '<div class="fl-cap"></div>' +
+    '<button type="button" class="fl-nav fl-prev" aria-label="Sebelumnya">‹</button>' +
+    '<button type="button" class="fl-nav fl-next" aria-label="Berikutnya">›</button>' +
+    '<div class="fl-dots"></div><div class="fl-prog"></div>');
+  var cap = st.querySelector(".fl-cap"), dotsW = st.querySelector(".fl-dots"), prog = st.querySelector(".fl-prog");
+  var dots = els.map(function(_, i){
+    var b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", "Layar " + (i+1));
+    b.addEventListener("click", function(e){ e.stopPropagation(); go(i, true); });
+    dotsW.appendChild(b); return b;
+  });
+  var idx = 0, n = els.length, timer = null, paused = false, dur = opt.dur || 3000, visible = !opt.lazy;
+
+  function fit(){
+    var H = st.clientHeight - 60, W = st.clientWidth;
+    els.forEach(function(e){
+      e.style.transform = "translate(-50%,-50%)";
+      var h = e.offsetHeight, w = e.offsetWidth;
+      e._base = Math.min(1, H / (h || 1), (W * 0.86) / (w || 1));
+      e._w = w * e._base;
+    });
+  }
+  function layout(){
+    var W = st.clientWidth;
+    els.forEach(function(e, i){
+      var d = i - idx; if (d > n/2) d -= n; if (d < -n/2) d += n;
+      var a = Math.abs(d);
+      var gap = e._kind === "wide" ? W * 0.5 : Math.min(e._w * 0.72, W * 0.34);
+      var sc = e._base * (1 - Math.min(a,2) * 0.2);
+      e.style.transform = "translate(-50%,-50%) translateX(" + (d * gap) + "px) scale(" + sc + ") perspective(900px) rotateY(" + (d * -18) + "deg)";
+      e.style.zIndex = String(20 - a);
+      e.style.opacity = a > 1 ? "0" : (a === 0 ? "1" : (e._kind === "wide" ? ".3" : ".55"));
+      e.style.filter = a === 0 ? "none" : "blur(1px) brightness(.75)";
+      e.classList.toggle("on", a === 0);
+    });
+    dots.forEach(function(b, i){ b.classList.toggle("on", i === idx); });
+    cap.textContent = opt.caps ? (slides[idx].cap || "") : "";
+    prog.classList.remove("run"); void prog.offsetWidth; prog.style.animationDuration = dur + "ms";
+    if (n > 1) prog.classList.add("run");
+  }
+  function go(i, manual){ idx = (i + n) % n; layout(); if (manual) start(); }
+  function start(){ clearInterval(timer); if (n < 2) return; timer = setInterval(function(){ if (!paused && visible && !document.hidden) go(idx + 1); }, dur); }
+  st.querySelector(".fl-prev").addEventListener("click", function(e){ e.stopPropagation(); go(idx - 1, true); });
+  st.querySelector(".fl-next").addEventListener("click", function(e){ e.stopPropagation(); go(idx + 1, true); });
+  st.addEventListener("mouseenter", function(){ paused = true; st.classList.add("paused"); });
+  st.addEventListener("mouseleave", function(){ paused = false; st.classList.remove("paused"); layout(); start(); });
+  var sx = null;
+  st.addEventListener("pointerdown", function(e){ sx = e.clientX; });
+  st.addEventListener("pointerup", function(e){
+    if (sx === null) return; var dx = e.clientX - sx; sx = null;
+    if (Math.abs(dx) > 40){ go(idx + (dx < 0 ? 1 : -1), true); st._swiped = Date.now(); }
+  });
+  // a swipe should not also open the pop-up
+  st.addEventListener("click", function(e){ if (st._swiped && Date.now() - st._swiped < 400) e.stopPropagation(); }, true);
+
+  if (opt.lazy && "IntersectionObserver" in window){
+    new IntersectionObserver(function(es){ es.forEach(function(e){ visible = e.isIntersecting; }); }, { threshold: .25 }).observe(st);
+  }
+  function refresh(){ fit(); layout(); }
+  st.querySelectorAll("img").forEach(function(im){ im.addEventListener("load", refresh); });
+  var rt; addEventListener("resize", function(){ clearTimeout(rt); rt = setTimeout(refresh, 150); });
+  refresh();
+  if (!REDUCED || true) start();
+  return { el: st, stop: function(){ clearInterval(timer); }, refresh: refresh };
+}
+
+/* ---------- 1. Build cards on the page ---------- */
+var CARD = {
+  "build-yt":      { height: "clamp(230px, 44vw, 330px)", wide: "84%", label: "4 screens" },
+  "build-rekap":   { height: "360px", label: "3 screens" },
+  "build-booking": { height: "320px", label: "3 screens" },
+  "build-kuy":     { height: "340px", label: "3 screens" },
+  "build-porto":   { height: "300px", browser: "300px", label: "3 screens" }
+};
+var started = 0;
+document.querySelectorAll('[onclick^="openInfo(\'build-"]').forEach(function(card){
+  var id = card.getAttribute("onclick").match(/openInfo\('([^']+)'\)/)[1];
+  var slides = getSlides(id); var o = CARD[id];
+  if (!slides || !slides.length || !o) return;
+  var old = card.firstElementChild;
+  var holder = document.createElement("div");
+  if (id === "build-yt") holder.className = "lg:col-span-2";
+  else if (id === "build-rekap") holder.className = "w-full sm:w-60 flex-shrink-0";
+  holder.style.minWidth = "0";
+  old.replaceWith(holder);
+  o.lazy = true; o.dur = 3000 + (started++) * 250;
+  makeFlow(holder, slides, o);
+});
+
+/* ---------- 2. Build pop-ups: same sliding stage at the front ---------- */
+var popFlow = null;
+var _open = window.openInfo;
+window.openInfo = openInfo = function(id){
+  if (popFlow){ popFlow.stop(); popFlow = null; }
+  _open(id);
+  if (id.indexOf("build-") !== 0) return;
+  var vis = document.getElementById("infoVisual");
+  var slides = getSlides(id); if (!slides || !slides.length) return;
+  var target;
+  if (vis.querySelector("#ytMain")){
+    // drop the old main picture, caption and thumbnails
+    var main = vis.querySelector("#ytMain");
+    target = main.closest(".rounded-xl") || main;
+    var capEl = vis.querySelector("#ytCap"), thumbs = capEl && capEl.nextElementSibling;
+    if (capEl) capEl.remove(); if (thumbs) thumbs.remove();
+  } else {
+    target = vis.querySelector(".overflow-x-auto") || vis.querySelector(".grid");
+    var hint = vis.querySelector("p.md\\:hidden"); if (hint) hint.remove();
+  }
+  if (!target) return;
+  var holder = document.createElement("div");
+  target.replaceWith(holder);
+  var big = id === "build-yt" ? { height: "clamp(280px, 52vw, 470px)", wide: "86%" } : id === "build-porto" ? { height: "380px", browser: "380px" } : { height: "470px" };
+  big.label = slides.length + " screens · auto-play"; big.dur = 3200; big.caps = true;
+  popFlow = makeFlow(holder, slides, big);
+  requestAnimationFrame(function(){ popFlow && popFlow.refresh(); });
+};
+var _close = window.closeInfo;
+window.closeInfo = closeInfo = function(){ if (popFlow){ popFlow.stop(); popFlow = null; } _close(); };
 })();
 </script>
