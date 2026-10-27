@@ -1399,6 +1399,48 @@ let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>
 
             </div>
 
+            <!-- Project 5: health+care concept feed (test assignment) -->
+
+            <div onclick="openProjectModal('healthcare')" data-aos="fade-up"
+                class="md:col-span-2 lg:col-span-3 cursor-pointer bg-white border rounded-3xl shadow-lg overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition duration-300 flex flex-col md:flex-row">
+
+                <div class="w-full md:w-80 h-64 md:h-auto md:min-h-[18rem] flex-shrink-0 bg-gradient-to-br from-indigo-900 via-blue-700 to-cyan-500 flex items-center justify-center">
+                    <div class="text-center text-white px-6">
+                        <h3 class="text-3xl font-bold">health+care</h3>
+                        <p class="mt-2">Lima Ritual · Feed Series</p>
+                    </div>
+                </div>
+
+                <div class="p-8 flex flex-col justify-center">
+
+                    <span class="inline-block bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-semibold w-fit">
+                        Concept · Test Assignment
+                    </span>
+
+                    <h3 class="text-2xl font-bold text-primary mt-5">
+                        health+care Herbal Drinks: Instagram Feed Concept
+                    </h3>
+
+                    <p class="mt-4 text-gray-600 leading-7">
+                        Six feed posts for five herbal drinks (Erlimpex). Each bottle gets its own
+                        set, colour, and one-line headline, then all five meet in a closing group shot.
+                        Made as a test assignment for a Content Creator role.
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 mt-5">
+                        <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">Art Direction</span>
+                        <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">Copywriting</span>
+                        <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">Canva</span>
+                        <span class="bg-slate-100 px-3 py-1 rounded-full text-sm">AI-assisted Visuals</span>
+                    </div>
+
+                    <p class="mt-5 text-sm font-semibold text-blue-600">
+                        Klik untuk lihat detail →
+                    </p>
+
+                </div>
+
+            </div>
 
 
         </div>
@@ -2375,6 +2417,37 @@ const projectsData = {
     ]
   },
 
+  "healthcare": {
+    title: "health+care Feed Series",
+    role: "Content Creator · Test Assignment",
+    gradient: "bg-gradient-to-br from-indigo-900 via-blue-700 to-cyan-500",
+    badgeBg: "bg-emerald-100",
+    badgeText: "text-emerald-700",
+    badgeLabel: "Concept · Test Assignment",
+    description: `<p><strong>Context.</strong> A test assignment for a Content Creator role at Erlimpex, the company behind <strong>health+care</strong> herbal drinks and supplements. This is concept work: the posts were not published by the brand.</p>
+<p class="mt-4"><strong>The brief I set myself.</strong> Make five 220 ml herbal drinks (Mengkudu, Temulawak, Ivy, Alang-alang &amp; Lime, Echinacea) look modern and premium for a 25–45 audience, while keeping every health claim within BPOM-safe wording.</p>
+<p class="mt-6 font-semibold text-slate-800">How I made it</p>
+<div class="grid sm:grid-cols-2 gap-3 mt-3">
+<div class="bg-slate-50 border rounded-xl p-4"><p class="text-xs font-bold text-blue-600">01 · Research</p><p class="text-sm mt-1 leading-6">Studied the brand's feed, its five-colour palette (mint, yellow, blue, teal, peach), its tone of voice, and the approved claim for each product.</p></div>
+<div class="bg-slate-50 border rounded-xl p-4"><p class="text-xs font-bold text-blue-600">02 · Concept: one ingredient, one mood</p><p class="text-sm mt-1 leading-6">Each bottle lies flat on a set built from its own ingredient and one brand colour: mint linen and noni flowers, yellow linen and temulawak, clear water and ivy, ice and lime, peach and echinacea.</p></div>
+<div class="bg-slate-50 border rounded-xl p-4"><p class="text-xs font-bold text-blue-600">03 · Copy</p><p class="text-sm mt-1 leading-6">One short, human headline per post (e.g. <em>"Napas lega, tanpa drama."</em>), with the product name and its BPOM-safe claim in small caps underneath.</p></div>
+<div class="bg-slate-50 border rounded-xl p-4"><p class="text-xs font-bold text-blue-600">04 · Production</p><p class="text-sm mt-1 leading-6">Backgrounds and props generated with AI (Gemini), then composited with the real bottle packshots, with light, shadows, and angles matched. Layout and typography finished in Canva.</p></div>
+<div class="bg-slate-50 border rounded-xl p-4"><p class="text-xs font-bold text-blue-600">05 · Iterate</p><p class="text-sm mt-1 leading-6">Several rounds of review: an elegant serif for headlines, less ingredient text, softer shadows that never cover the bottle, and consistent logo placement.</p></div>
+<div class="bg-slate-50 border rounded-xl p-4"><p class="text-xs font-bold text-blue-600">06 · Close the series</p><p class="text-sm mt-1 leading-6">Post 06, <em>"Lima ritual, satu alam."</em>, brings all five bottles onto one rainbow of the brand colours, so the feed reads as one family.</p></div>
+</div>
+<p class="mt-5 text-sm text-slate-500">AI-assisted visuals. Concept, art direction, copywriting, compositing direction, and layout by me. Product names and packaging belong to health+care / Erlimpex.</p>`,
+    tools: ["Art Direction","Copywriting","Brand Guidelines","BPOM-safe Claims","Canva","Gemini (AI images)","Photo Compositing"],
+    instagram: "",
+    images: [
+      "healthcare-01.jpg",
+      "healthcare-02.jpg",
+      "healthcare-03.jpg",
+      "healthcare-04.jpg",
+      "healthcare-05.jpg",
+      "healthcare-06.jpg"
+    ]
+  },
+
   "steam-motor": {
     title: "123 Motowash Instagram",
     role: "Social Media Management",
@@ -2454,7 +2527,10 @@ function openProjectModal(id){
     igWrap.classList.add("hidden");
   }
 
-  renderProjectPerf(data);
+  var perfBox = document.getElementById("modalPerf"), perfOn = !!data.views;
+  perfBox.style.display = perfOn ? "" : "none";
+  perfBox.previousElementSibling.style.display = perfOn ? "" : "none";
+  if (perfOn) renderProjectPerf(data);
 
   const modal = document.getElementById("projectModal");
   modal.classList.remove("hidden");
