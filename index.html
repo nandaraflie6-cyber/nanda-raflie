@@ -614,11 +614,17 @@ function fillCurtain(word,alt){
 }
 function full(c){ return c.indexOf("circle")===0 ? c.replace(/circle\(0%/,"circle(150%") : "inset(0% 0% 0% 0%)"; }
 function targetTop(el){ var sp=el.parentNode && el.parentNode.classList.contains("pin-spacer") ? el.parentNode : el; return sp.getBoundingClientRect().top + window.scrollY; }
+var txSeen={};
+function softIn(el){
+  var kids=Array.prototype.filter.call(el.children,function(c){ return !c.classList.contains("curtain"); });
+  gsap.fromTo(kids,{opacity:0,y:40},{opacity:1,y:0,duration:.7,ease:"power3.out",stagger:.06,overwrite:"auto",clearProps:"opacity"});
+}
 function playTX(t,i){
   if(txBusy || pm.classList.contains("open")) return;
   var el=document.querySelector(t[0]); if(!el) return;
+  if(txSeen[i]){ softIn(el); return; }
   var dy=targetTop(el)-window.scrollY; if(dy < -innerHeight*0.25 || dy > innerHeight) return;
-  txBusy=true; if(lenis) lenis.stop();
+  txSeen[i]=true; txBusy=true; if(lenis) lenis.stop();
   var parts=fillCurtain(t[1], i%2===1);
   var tl=gsap.timeline({onComplete:function(){ gsap.set(curtain,{visibility:"hidden"}); txBusy=false; if(lenis) lenis.start(); }});
   tl.set(curtain,{visibility:"visible",clipPath:t[2]})
