@@ -662,9 +662,16 @@ gsap.utils.toArray(".role").forEach(function(r,i){
 });
 
 /* SKILLS: rows slide in opposite directions with scroll */
+/* tool rows loop forever, alternating directions; scrolling speeds them up, hovering pauses a row */
 gsap.utils.toArray(".row").forEach(function(row,i){
-  var dir=i%2?1:-1;
-  gsap.fromTo(row,{xPercent:dir<0?0:-30},{xPercent:dir<0?-30:0,ease:"none",scrollTrigger:{trigger:".skills",start:"top bottom",end:"bottom top",scrub:true}});
+  var left=i%2===0;
+  var loop=gsap.fromTo(row,{xPercent:left?0:-50},{xPercent:left?-50:0,ease:"none",duration:26+i*6,repeat:-1});
+  ScrollTrigger.create({trigger:".skills",start:"top bottom",end:"bottom top",onUpdate:function(self){
+    var v=Math.min(5,1+Math.abs(self.getVelocity())/500);
+    gsap.to(loop,{timeScale:v,duration:.25,overwrite:true}); gsap.to(loop,{timeScale:1,duration:1.2,delay:.25});
+  }});
+  row.addEventListener("mouseenter",function(){ gsap.to(loop,{timeScale:0,duration:.4,overwrite:true}); });
+  row.addEventListener("mouseleave",function(){ gsap.to(loop,{timeScale:1,duration:.6,overwrite:true}); });
 });
 gsap.from(".area",{y:80,rotateX:-35,opacity:0,transformOrigin:"top",stagger:.08,duration:.9,ease:"expo.out",scrollTrigger:{trigger:".areas",start:"top 85%"}});
 
